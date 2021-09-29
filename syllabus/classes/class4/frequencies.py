@@ -23,7 +23,7 @@ def doc_freq(doc_lst) -> dict:
     """
     Takes in a list of documents which each is a list of tokens (str) and return a dictionary of frequencies for each token over all the documents. E.g. {"Aarhus": 20, "the": 2301, ...}
     """
-    #empty list (can only append to lists, not to counters)
+    #empty list (.append works on lists, not counters)
     all_counters_lst = []
 
     #Iterating through docs
