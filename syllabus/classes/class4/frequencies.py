@@ -17,6 +17,31 @@ def term_freq(tokens) -> dict:
     #return tf_dict
     return tf_dict
 
+# Document frequency where DF is the number of documents in which the word is present
+#If one or more occurrence(s) in the document/list counts as 1 occurence (not more)
+def doc_freq2(doc_lst) -> dict:
+    """
+    Takes in a list of documents which each is a list of tokens (str) and return a dictionary of frequencies for each token over all the documents. E.g. {"Aarhus": 20, "the": 2301, ...}
+    """
+    #empty list
+    all_counters_lst = []
+
+    #iterating through docs, first keeping only unique elements in the lists, then using Counter
+    for doc in doc_lst:
+        #unique elements in list
+        doc = set(doc)
+        #append to list a counter with frequencies in each doc
+        all_counters_lst.append(Counter(doc))
+
+    #Empty counter (.update works on counters, not lists)
+    all_counters = Counter()
+
+    #iterating thorugh counters, updating (=adding)
+    for counter in all_counters_lst:
+        all_counters.update(counter)
+
+    return dict(all_counters)
+
 
 # Document frequency
 def doc_freq(doc_lst) -> dict:
@@ -38,7 +63,7 @@ def doc_freq(doc_lst) -> dict:
     for counter in all_counters_lst:
         all_counters.update(counter)
 
-    return all_counters
+    return dict(all_counters)
 
 
 
