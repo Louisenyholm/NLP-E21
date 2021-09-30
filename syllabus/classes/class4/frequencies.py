@@ -1,7 +1,50 @@
 from collections import Counter
 
+# Term frequency
+def term_freq(tokens) -> dict:
+    """
+    Takes in a list of tokens (str) and return a dictionary of term frequency of each token
+    (doc = a list of tokens)
+    """
+    #counting occurrences of each unique token
+    term_count = Counter(tokens)
+    #total number of tokens
+    n_tokens = len(tokens)
 
-def term_freq(doc) -> dict:
+    #put into dictionary in the formant token
+    tf_dict = {token: count/n_tokens for token, count in term_count.items()}
+    
+    #return tf_dict
+    return tf_dict
+
+
+# Document frequency
+def doc_freq(doc_lst) -> dict:
+    """
+    Takes in a list of documents which each is a list of tokens (str) and return a dictionary of frequencies for each token over all the documents. E.g. {"Aarhus": 20, "the": 2301, ...}
+    """
+    #empty list (can only append to lists, not to counters)
+    all_counters_lst = []
+
+    #Iterating through docs
+    for doc in doc_lst:
+        #append to list a counter with frequencies in each doc
+        all_counters_lst.append(Counter(doc))
+
+    #Empty counter (.update works on counters, not lists)
+    all_counters = Counter()
+
+    #iterating thorugh counters, updating (=adding)
+    for counter in all_counters_lst:
+        all_counters.update(counter)
+
+    return all_counters
+
+
+
+
+# Misunderstood
+def misunderstood_token_freq(doc) -> dict:
     """
     Takes in a list of tokens (str) and return a dictionary of term frequency of each token
     (doc = a list of tokens)
@@ -19,7 +62,7 @@ def term_freq(doc) -> dict:
     return tf_dict
 
 
-def doc_freq(doc_lst) -> dict:
+def misunderstood_doc_freq(doc_lst) -> dict:
     """
     Takes in a list of documents which each is a list of tokens (str) and return a dictionary of frequencies for each token over all the documents. E.g. {"Aarhus": 20, "the": 2301, ...}
     """
