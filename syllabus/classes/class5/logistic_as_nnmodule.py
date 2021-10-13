@@ -1,5 +1,5 @@
 """
-Logistic regression implemented using the nn.module class
+Logistic regression implemented using the nn.module class (in pytorch)
 """
 
 import torch
@@ -26,11 +26,11 @@ y = y.view(y.shape[0], 1)
 
 
 # initialize model
-model = Model(n_input_features=10)
+model = Model(n_input_features=10) #same as sayin model.forward()
 
 # define loss and optimizer
 criterion = nn.BCELoss()
-optimizer = torch.optim.Adam(model.parameters()) 
+optimizer = torch.optim.Adam(model.parameters()) #good default optimiser, learning rate can be specified here
 
 # train
 epochs = 10000
