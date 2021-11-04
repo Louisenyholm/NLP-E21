@@ -20,16 +20,12 @@ num_classes = train.features["ner_tags"].feature.num_classes
 print(num_classes)
 
 
-<<<<<<< HEAD
 # CONVERTING EMBEDDINGS ##getting word embeddings
 #We cannot just use gensim, because gensim returns as np embedding, and we want to return it as torch embedding
 import numpy as np
 
 import torch
 
-=======
-# CONVERTING EMBEDDINGS
->>>>>>> e4732e9599727118ad40b72a55bf0aceda78a541
 model = api.load("glove-wiki-gigaword-50")
 
 # convert gensim word embedding to torch word embedding
@@ -59,18 +55,11 @@ def tokens_to_idx(tokens, vocab=model.key_to_index):
     #vocab = dict
 
 
-<<<<<<< HEAD
 # sample batch of 10 sentences
 ## create batch of 10 sentences (as example)
 batch_tokens = train["tokens"][:10]
 batch_tags = train["ner_tags"][:10]
 batch_tok_idx = [tokens_to_idx(sent) for sent in batch_tokens] #converting sentences to idx
-=======
-# sample using only the first batch
-batch_tokens = next(batches_tokens)
-batch_tags = next(batches_tags)
-batch_tok_idx = [tokens_to_idx(sent) for sent in batch_tokens]
->>>>>>> e4732e9599727118ad40b72a55bf0aceda78a541
 batch_size = len(batch_tokens)
 
 # compute length of longest sentence in batch
@@ -94,23 +83,16 @@ for i in range(batch_size):
     batch_labels[i][:size] = tags
 
 
-<<<<<<< HEAD
 # since all data are indices, we convert them to torch LongTensors
 ##Longtensor = as interger (same as as.int) = converting it to this format for later use
-=======
-# since all data are indices, we convert them to torch LongTensors (integers)
->>>>>>> e4732e9599727118ad40b72a55bf0aceda78a541
 batch_input, batch_labels = torch.LongTensor(batch_input), torch.LongTensor(
     batch_labels
 )
 
 # CREATE MODEL
-<<<<<<< HEAD
 ##Applying the model
 from LSTM import RNN
 
-=======
->>>>>>> e4732e9599727118ad40b72a55bf0aceda78a541
 model = RNN(
     embedding_layer=embedding_layer, output_dim=num_classes + 1, hidden_dim_size=256
 )
