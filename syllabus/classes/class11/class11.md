@@ -149,7 +149,7 @@ The UK recorded 44,242 new coronavirus cases on Friday.
 The government has consistently said it has no plans for another lockdown, but has said it could bring in extra Covid measures in England to protect the NHS - known as Plan B - which include mandatory Covid passports for some indoor venues, compulsory face coverings in certain indoor settings and advice to work from home.
 """
 
-prompt = "tl;dr"
+prompt = "tl;dr" #too long didn't read
 
 output = generator(TEXT + prompt, 
                    max_length=630,  # max_length should be adaptable to model input size
